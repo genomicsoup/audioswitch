@@ -20,9 +20,9 @@ jobs:
           profile: minimal
           toolchain: nightly
           override: true
-          components: fmt
+          components: rustfmt
       
-      - name: Run tests
+      - name: Run fmt
         run: cargo fmt --all -- --check
 
   clippy:
@@ -39,5 +39,5 @@ jobs:
           override: true
           components: clippy
       
-      - name: Run tests
+      - name: Run clippy
         run: cargo clippy --all --all-features
