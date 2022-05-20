@@ -74,8 +74,7 @@ fn change_audio_device(
 fn cli() {
     let matches = Command::new("audioswitch")
         .version("0.1.0")
-        .author("genomicsoup")
-        .about("Switch default audio devices on Win10")
+        .about("Switch the current, default audio device on Win10")
         .arg(arg!(-l --list "List available audio devices").required(false))
         .arg(
             arg!(-i --"device-id" "Switch audio output using a device ID")
@@ -113,6 +112,7 @@ fn cli() {
         std::process::exit(0);
     }
 
+    // We're changing audio devices via an ID or name
     let change_result = if matches.is_present("device-id") {
         let device_id = matches.value_of("device-id").unwrap().to_string();
 
